@@ -118,4 +118,9 @@ model Message {
 ```bash
 npx prisma migrate dev --name init
 ```
+<nama_apa_yang_kalian_lalukan> bisa diganti dengan aktifitas apa yang kamu lakukan barusan contoh :
+1. inisialisasi
+2. add_new_model_User
+3. add_relation_to_catalog_and product
+
 `npx prisma migrate dev` wajib dilakukan setiap kali kalian sudah selesai mengubah `schema.prisma` atau adanya perubahan pada `schema.prisma` agar database selalu tersingkronisasi

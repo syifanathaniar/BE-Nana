@@ -11,6 +11,18 @@ app.get("/", async(req, res) => {
     res.send("here is the response");
 });
 
+
+// catalog Routes
+app.get("/catalogs", async(req, res) => {
+    const catalog = await prisma.catalog.findMany();
+    res.status(200).send(catalog);
+})
+// end  catalog routes
+// product Routes
+// end product routes
+// message Routes
+// end message routes
+
 app.all("*", async(req, res) => {
     res.json({
         message: "Routes you're looking is not found",
