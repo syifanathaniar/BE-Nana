@@ -1,0 +1,39 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+
+//model database 
+model Product {
+  id        Int @id @default(autoincrement())
+  name      String
+  price     Int
+  imageUrl  String? // kalau mau dibikin gpp kalau dtanya ksong
+  catalogId Int?
+  createdAt DateTime @default(now())
+  // Untuk relasiin dri product ke katalog yang dimana product boleh ga punya catalog
+  Catalog   Catalog? @relation(fields: [catalogId], references: [id])
+}
+
+model Catalog {
+   id        Int @id @default(autoincrement())
+  name       String
+  // untuk nambahin relasi antara catalog dengan product
+  products   Product[]// catalog punya banyak product
+}
+
+model Message {
+  id        Int @id @default(autoincrement())
+  name      String
+  email     String
+  message   String @db.Text // biar bisa nyimpen pesan dengan karakter yang panjang
+  createdAt DateTime
+}
